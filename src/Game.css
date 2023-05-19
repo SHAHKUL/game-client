@@ -1,0 +1,73 @@
+.container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+    border: none;
+    background-color: #290104;
+    color: azure;
+    height: 100%;
+
+}
+
+h1 {
+    font-size: 30px;
+}
+
+input {
+    height: 30px;
+    font-size: 20px;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 10px;
+    border: none;
+
+}
+
+label {
+    font-size: 20px;
+
+}
+
+button {
+    font-size: 18px;
+    background-color: crimson;
+    color: white;
+    border: none;
+    padding: 7px;
+    border-radius: 15px;
+
+}
+
+p {
+    font-size: 20px;
+    margin: 5px;
+
+}
+
+b {
+    font-size: 25px;
+
+}
+
+h4 {
+    display: flex;
+    justify-content: flex-start;
+    font-size: 25px;
+
+
+}
+
+.name {
+    font-size: 25px;
+    color: red;
+}
+
+
+.footer {
+    font-weight: 100;
+
+
+}
