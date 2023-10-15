@@ -7,13 +7,18 @@ function Game() {
   const [guesses, setGuesses] = useState([]);
   const [answer, setAnswer] = useState("");
   const [result, setResult] = useState("");
-  const [score, setScore] = useState(null);
-  function handleNameChange(event) {
-    setName(event.target.value);
-  }
+  const [score, setScore] = useState();
 
-  function handleGuessChange(event) {
-    setGuess(event.target.value);
+  function generateRandomNumber() {
+    const digits = [];
+    while (digits.length < 4) {
+      const rand = Math.floor(Math.random() * 10);
+      if (!digits.includes(rand)) {
+        digits.push(rand);
+      }
+    }
+
+    setAnswer(digits.join(""));
   }
 
   function evaluateGuess(guess, answer) {
@@ -29,24 +34,14 @@ function Game() {
         plusMinus.push("*");
       }
     });
+
     return plusMinus.join("");
-  }
-
-  function generateRandomNumber() {
-    const digits = [];
-    while (digits.length < 4) {
-      const digit = Math.floor(Math.random() * 10);
-      if (!digits.includes(digit)) {
-        digits.push(digit);
-      }
-    }
-
-    setAnswer(digits.join(""));
   }
 
   function handleSubmit(event) {
     event.preventDefault();
     const plusMinus = evaluateGuess(guess, answer);
+
     const newGuesses = [...guesses, { guess, plusMinus }];
     setGuesses(newGuesses);
     setGuess("");
@@ -76,7 +71,11 @@ function Game() {
           <form onSubmit={handleSubmit}>
             <label>
               Enter your name:
-              <input type="text" value={name} onChange={handleNameChange} />
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
             </label>
             <br />
             <label>
@@ -85,13 +84,14 @@ function Game() {
                 type="text"
                 pattern="\d{4}"
                 value={guess}
-                onChange={handleGuessChange}
+                onChange={(e) => setGuess(e.target.value)}
               />
             </label>
             <button type="submit">Guess</button>
           </form>
         </>
       )}
+
       {guesses.length > 0 && (
         <table>
           <thead>
